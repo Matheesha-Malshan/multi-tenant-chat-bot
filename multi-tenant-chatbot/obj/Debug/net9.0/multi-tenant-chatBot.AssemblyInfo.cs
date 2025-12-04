@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("multi-tenant-chatBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40811ad2bd10846acc7b27a76d238d87b0d06d9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("multi-tenant-chatBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("multi-tenant-chatBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,7 +3,7 @@ using multi_tenant_chatBot.Data;
 using multi_tenant_chatBot.Dto;
 using multi_tenant_chatBot.Model;
 
-namespace multi_tenant_chatBot.Service.OrganizationServiceImpl;
+namespace multi_tenant_chatBot.Service.Impl;
 
 public class OrganizationServiceImpl : IOrganizationService
 {

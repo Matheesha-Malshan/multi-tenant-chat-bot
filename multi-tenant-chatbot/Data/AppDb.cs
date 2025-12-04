@@ -9,4 +9,19 @@ public class AppDb:DbContext
     {
     }
     public DbSet<OrganizationEntity> Organizations { get; set; }
+    public DbSet<ChatBotEntity> ChatBots { get; set; }
+    public DbSet<LlmConfigurationEntity> LlmConfig { get; set; }
+    public DbSet<DocumentEntity> Document { get; set; }
+   
+
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<ChatBotEntity>()
+            .HasOne(e => e.LlmConfiguration)
+            .WithOne(l => l.ChatBotEntity)
+            .HasForeignKey<LlmConfigurationEntity>(l => l.ChatBotId);
+
+    }
+
 }

@@ -45,3 +45,15 @@
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/MySqlConnector.dll
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Pomelo.EntityFrameworkCore.MySql.dll
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/multi-tenant-chatBot.sourcelink.json
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/multi-tenant-chatBot.staticwebassets.runtime.json
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Microsoft.Extensions.DependencyModel.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.AspNetCore.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Extensions.Hosting.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Extensions.Logging.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Formatting.Compact.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Settings.Configuration.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Sinks.Console.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Serilog.Sinks.File.dll
