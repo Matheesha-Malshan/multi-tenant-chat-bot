@@ -1,30 +1,28 @@
-using multi_tenant_chatBot.Model;
+using multi_tenant_chatBot.Dto;
 
 namespace multi_tenant_chatBot.Observers.Impl;
 
 public class SubjectObserverImpl:ISubjectObserver
 {
-    private List<IAnalysisObserver> _observers;
-    public SubjectObserverImpl()
-    {
-        _observers=new List<IAnalysisObserver>();
-    }
+    private List<IAnalysisObserver> _observers=new();
+    
 
     public void AddObserver(IAnalysisObserver observer)
     {
         _observers.Add(observer);
     }
 
-    public void AddChange(DocumentEntity documentEntity)
+    public async Task AddChange(AnalysisDto  analysis)
     {
-        NotifyObservers(documentEntity);
+        await NotifyObservers(analysis);
     }
 
-    public void NotifyObservers(DocumentEntity documentEntity)
+    public async Task NotifyObservers(AnalysisDto  analysis)
     {
+       
         foreach (var observer in _observers)
         {
-            observer.Analyze(documentEntity);
+            await observer.Analyze(analysis);
         }
     }
 

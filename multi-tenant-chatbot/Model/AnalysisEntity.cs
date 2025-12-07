@@ -18,11 +18,5 @@ public class AnalysisEntity
     
     public ChatBotEntity?  Chat{get; set; }
 
-    public AnalysisEntity(int chatId, int totalQueries, int totalChunks, int totalDocuments)
-    {
-        ChatBotId = chatId;
-        TotalQueries = totalQueries;
-        TotalChunks = totalChunks;
-        NumberOfDocuments = totalDocuments;
-    }
+    
 }

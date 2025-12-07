@@ -76,8 +76,13 @@ public class DocumentServiceImpl:IDocumentService
 
             _appDb.Document.Update(document);
             await _appDb.SaveChangesAsync();
-            
-            _subjectObserver.AddChange(document);
+
+            await _subjectObserver.AddChange(new AnalysisDto(
+                documentDto.ChatBotId,
+                0,
+                1,
+                document.Chunks
+            ));
             
             await transaction.CommitAsync();
 
@@ -93,7 +98,4 @@ public class DocumentServiceImpl:IDocumentService
 
     }
     
-    
-
-   
 }

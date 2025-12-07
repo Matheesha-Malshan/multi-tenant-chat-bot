@@ -8,6 +8,8 @@ using multi_tenant_chatBot.Embeddings.Impl;
 using multi_tenant_chatBot.File;
 using multi_tenant_chatBot.File.Impl;
 using multi_tenant_chatBot.Llm;
+using multi_tenant_chatBot.Observers;
+using multi_tenant_chatBot.Observers.Impl;
 using multi_tenant_chatBot.States;
 using multi_tenant_chatBot.Service;
 using multi_tenant_chatBot.Service.Impl;
@@ -40,6 +42,8 @@ try
     builder.Services.AddHttpClient();
     builder.Services.AddScoped<IEmbeddingsCreater, EmbeddingsCreater>();
     builder.Services.AddScoped<ISavingEmbeddings, SavingEmbeddings>();
+    builder.Services.AddSingleton<ISubjectObserver, SubjectObserverImpl>();
+    builder.Services.AddSingleton<DocAndChunksObserver>();
     
     var connectionString = "server=localhost;user=root;password=1234;database=ragPipeline";
     var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
@@ -49,7 +53,8 @@ try
         options.UseMySql(connectionString, serverVersion));
     
     var app = builder.Build();
-
+    
+    
     app.UseWebSockets();
     app.Map("/ws/chat", WebSocketHandler.Handle);
     
@@ -64,7 +69,10 @@ try
     {
         app.MapOpenApi();
     }
-
+    
+    var observer = app.Services.GetRequiredService<DocAndChunksObserver>();
+    
+    
     app.UseRouting();
 
     app.UseAuthorization();

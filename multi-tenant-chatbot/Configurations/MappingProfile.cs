@@ -12,5 +12,6 @@ public class MappingProfile: Profile
         CreateMap<ChatBotDto, ChatBotEntity>();
         CreateMap<LlmConfigurationsDto, LlmConfigurationEntity>();
         CreateMap<DocumentDto, DocumentEntity>();
+        CreateMap<AnalysisDto, AnalysisEntity>();
     }
 }
