@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using multi_tenant_chatBot.Data;
 using multi_tenant_chatBot.Dto;
 using multi_tenant_chatBot.Model;
@@ -18,11 +19,20 @@ public class LlmConfigServiceImpl: ILlmConfigService
 
     public async Task<LlmConfigurationEntity> CreateConfig(LlmConfigurationsDto configDto)
     {
-        var configEntity = _mapper.Map<LlmConfigurationsDto, LlmConfigurationEntity>(configDto);
-        _appDb.Update(configEntity);
-        await _appDb.SaveChangesAsync();
-        return configEntity;
+
+        var config = await _appDb.LlmConfig
+            .FirstOrDefaultAsync(c => c.ChatBotId == configDto.ChatBotId);
+
+        if (config == null)
+        {
+            throw new Exception("Config not found");
+        }
+
+        var configurationEntity = _mapper.Map(configDto, config);
         
+        _appDb.LlmConfig.Update(configurationEntity);
+        _appDb.SaveChanges();
+        return _mapper.Map<LlmConfigurationEntity>(config);
     }
     
     public async Task<LlmConfigurationEntity> DefaultConfig(LlmConfigurationsDto configDto)

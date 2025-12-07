@@ -1,9 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using multi_tenant_chatBot.Configurations;
 using multi_tenant_chatBot.Data;
+using multi_tenant_chatBot.DocRead;
+using multi_tenant_chatBot.DocRead.Impl;
+using multi_tenant_chatBot.Embeddings;
+using multi_tenant_chatBot.Embeddings.Impl;
 using multi_tenant_chatBot.File;
 using multi_tenant_chatBot.File.Impl;
-using multi_tenant_chatBot.Model;
+using multi_tenant_chatBot.Llm;
+using multi_tenant_chatBot.States;
 using multi_tenant_chatBot.Service;
 using multi_tenant_chatBot.Service.Impl;
 using Serilog;
@@ -27,10 +32,15 @@ try
     builder.Services.AddScoped<ILlmConfigService,LlmConfigServiceImpl>();
     builder.Services.AddScoped<IDocumentService,DocumentServiceImpl>();
     builder.Services.AddScoped<IFileService,FileServiceImpl>();
-
     builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-
+    builder.Services.AddScoped<IReaderSelector, ReaderSelectorImpl>();
+    builder.Services.AddScoped<IReaders, PdfReaderImpl>();
+    builder.Services.AddScoped<IReaders,TextReaderImpl>();
+    builder.Services.AddScoped<IChunckCreater,ChunkCreater>();
+    builder.Services.AddHttpClient();
+    builder.Services.AddScoped<IEmbeddingsCreater, EmbeddingsCreater>();
+    builder.Services.AddScoped<ISavingEmbeddings, SavingEmbeddings>();
+    
     var connectionString = "server=localhost;user=root;password=1234;database=ragPipeline";
     var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
 
@@ -39,7 +49,9 @@ try
         options.UseMySql(connectionString, serverVersion));
     
     var app = builder.Build();
-    
+
+    app.UseWebSockets();
+    app.Map("/ws/chat", WebSocketHandler.Handle);
     
     using (var scope = app.Services.CreateScope())
     {

@@ -26,4 +26,6 @@ public class ChatBotEntity
     public LlmConfigurationEntity? LlmConfiguration { get; set; }
     
     public ICollection<DocumentEntity>?  Documents { get; set; }=new List<DocumentEntity>();
+    
+    public AnalysisEntity? AnalysisEntity { get; set; }
 }

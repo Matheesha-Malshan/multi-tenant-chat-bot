@@ -60,9 +60,17 @@
               "target": "Package",
               "version": "[9.0.9, )"
             },
+            "PdfPig": {
+              "target": "Package",
+              "version": "[0.1.12, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Qdrant.Grpc": {
+              "target": "Package",
+              "version": "[1.0.0-alpha.6, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",

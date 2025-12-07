@@ -11,4 +11,6 @@ public class DocumentDto
     public required IFormFile File { get; set; }
     public string? FileUrl { get; set; }
     
+    public ReaderType ReaderType { get; set; }
+    
 }

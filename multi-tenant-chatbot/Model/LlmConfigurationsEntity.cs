@@ -14,9 +14,9 @@ public class LlmConfigurationEntity
     
     [MaxLength(255)]
     public string? ModelName { get; set; }
-    public float Temperature { get; set; }
+    public double Temperature { get; set; }
     public int MaxToken { get; set; }
-    public float TopP { get; set; }
+    public double TopP { get; set; }
     
     public ChatBotEntity? ChatBotEntity { get; set; }
 }

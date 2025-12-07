@@ -1,0 +1,9 @@
+Entity Framework Core does not support multiple parallel operations being run on the same DbContext instance. This includes both parallel execution of async queries and any explicit concurrent use from multiple threads. Therefore, always await async calls immediately, or use separate DbContext instances for operations that execute in parallel. See Avoiding DbContext threading issues for more information and examples.
+
+Typically you create a class that derives from DbContext and contains DbSet<TEntity> properties for each entity in the model. If the DbSet<TEntity> properties have a public setter, they are automatically initialized when the instance of the derived context is created.
+
+Override the OnConfiguring(DbContextOptionsBuilder) method to configure the database (and other options) to be used for the context. Alternatively, if you would rather perform configuration externally instead of inline in your context, you can use DbContextOptionsBuilder<TContext> (or DbContextOptionsBuilder) to externally create an instance of DbContextOptions<TContext> (or DbContextOptions) and pass it to a base constructor of DbContext.
+
+The model is discovered by running a set of conventions over the entity classes found in the DbSet<TEntity> properties on the derived context. To further configure the model that is discovered by convention, you can override the OnModelCreating(ModelBuilder) method.
+
+See DbContext lifetime, configuration, and initialization, Querying data with EF Core, Changing tracking, and Saving data with EF Core for more information and examples.
