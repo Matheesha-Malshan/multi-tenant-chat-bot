@@ -35,7 +35,7 @@ public class ChatBotServiceImpl: IChatBotService
             var result=await _configService.
                 DefaultConfig(new LlmConfigurationsDto(
                     chatBotEntity.Id,
-                    "gpt",
+                    LlmModelsDto.KimiK2,
                     2.2,
                     45,
                     1.2

@@ -8,6 +8,8 @@ using multi_tenant_chatBot.Embeddings.Impl;
 using multi_tenant_chatBot.File;
 using multi_tenant_chatBot.File.Impl;
 using multi_tenant_chatBot.Llm;
+using multi_tenant_chatBot.LlmModels;
+using multi_tenant_chatBot.LlmModels.impl;
 using multi_tenant_chatBot.Observers;
 using multi_tenant_chatBot.Observers.Impl;
 using multi_tenant_chatBot.States;
@@ -44,6 +46,13 @@ try
     builder.Services.AddScoped<ISavingEmbeddings, SavingEmbeddings>();
     builder.Services.AddSingleton<ISubjectObserver, SubjectObserverImpl>();
     builder.Services.AddSingleton<DocAndChunksObserver>();
+    builder.Services.AddScoped<IRetriveEmbeddings, RetriveEmbeddings>();
+    builder.Services.AddScoped<ISemanticSearchService, SemanticSearchServiceImpl>();
+    builder.Services.AddScoped<IModels,GptOss20B>();
+    builder.Services.AddScoped<IModels,GptOss120B>();
+    builder.Services.AddScoped<IModels,KimiK2>();
+    builder.Services.AddScoped<IModels,Llama4Scout>();
+    builder.Services.AddScoped<IModelSelector,ModelSelector>();
     
     var connectionString = "server=localhost;user=root;password=1234;database=ragPipeline";
     var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));

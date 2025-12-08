@@ -13,5 +13,6 @@ public class MappingProfile: Profile
         CreateMap<LlmConfigurationsDto, LlmConfigurationEntity>();
         CreateMap<DocumentDto, DocumentEntity>();
         CreateMap<AnalysisDto, AnalysisEntity>();
+        CreateMap<LlmConfigurationEntity, LlmConfigurationsDto>();
     }
 }

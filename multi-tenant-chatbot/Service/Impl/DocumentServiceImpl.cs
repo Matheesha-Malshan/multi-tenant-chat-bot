@@ -63,7 +63,7 @@ public class DocumentServiceImpl:IDocumentService
             foreach (var sentense in chunkList)
             {
                 float[]? a = await _embeddingsCreater.CreateEmbeddings(sentense);
-                await _savingEmbeddings.CreateEmbeddingsOnDb(documentDto,a);
+                await _savingEmbeddings.CreateEmbeddingsOnDb(documentDto,a,sentense);
             }
             responseDto.Message = "document is Proceed successfully";
             responseDto.Status = "Proceed";
