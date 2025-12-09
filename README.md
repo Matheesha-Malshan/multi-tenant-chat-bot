@@ -1,3 +1,5 @@
+![Logo](./assets/logo.png)
+
 🏢 Multi-Tenant RAG Chatbot Platform (.NET 9 | Qdrant | MongoDB | Ollama)
 
 A powerful multi-tenant Retrieval-Augmented Generation (RAG) chatbot platform where organizations and individuals can create their own isolated AI chatbots.
