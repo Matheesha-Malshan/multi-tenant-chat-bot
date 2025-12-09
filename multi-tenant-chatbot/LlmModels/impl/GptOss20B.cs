@@ -8,13 +8,13 @@ namespace multi_tenant_chatBot.LlmModels.impl;
 public class GptOss20B:IModels
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly string _apiKey = "YOUR_API_KEY";
+    private readonly string _apiKey = "";
 
     public GptOss20B(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }
-    public async Task<string> CreateChat(string userQuery,LlmConfigurationsDto configDto)
+    public async Task<string> CreateChat(string userQuery,LlmConfigurationsDto configDto,string words)
     {
         
         var client = _httpClientFactory.CreateClient();
@@ -22,16 +22,39 @@ public class GptOss20B:IModels
         client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", _apiKey);
 
+        
+        
         var requestBody = new
         {
             messages = new[]
             {
-                new { role = "user", content = "hei dear" }
+              
+                new
+                {
+                    role = "system", content = @"You are a Retrieval-Augmented Generation (RAG) assistant.
+                                                You must answer ONLY using the information provided in the CONTEXT section.
+                                                Do not use prior knowledge.
+                                                Do not hallucinate.
+                                                If the answer cannot be found in the context, simply say:
+                                                'I don’t know based on the provided context.'"
+                    
+                },
+                new
+                {
+                    role = "user", content = words
+                    
+                },
+                new
+                {
+                    role = "system", content = userQuery
+                    
+                }
+                
             },
             model = "openai/gpt-oss-120b",
-            temperature = 1,
-            max_completion_tokens = 8192,
-            top_p = 1,
+            temperature = configDto.Temperature,
+            max_completion_tokens = configDto.MaxToken,
+            top_p = configDto.TopP,
             stream = true,
             reasoning_effort = "medium",
             stop = (string?)null
@@ -49,8 +72,7 @@ public class GptOss20B:IModels
         );
 
         response.EnsureSuccessStatusCode();
-
-        // STREAMING READER
+        
         var stream = await response.Content.ReadAsStreamAsync();
         using var reader = new StreamReader(stream);
 
@@ -80,9 +102,7 @@ public class GptOss20B:IModels
                     {
                         var text = content.GetString();
                         fullText.Append(text);
-
-                        // OPTIONAL: print live tokens to console 
-                        Console.Write(text);
+                        
                     }
                 }
                 catch
@@ -91,7 +111,7 @@ public class GptOss20B:IModels
                 }
             }
         }
-
+       
         return fullText.ToString();
     }
     

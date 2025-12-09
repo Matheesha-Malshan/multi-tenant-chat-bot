@@ -69,6 +69,6 @@
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Grpc.Net.Client.dll
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Grpc.Net.Common.dll
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/bin/Debug/net9.0/Qdrant.Grpc.dll
-/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/compressed/hrwutnhsiw-y6h7hsrxbx.gz
-/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/compressed/s5l08net9k-y6h7hsrxbx.gz
 /home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/compressed/x9n0t4h1dn-y6h7hsrxbx.gz
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/compressed/0d0ptofrdt-y6h7hsrxbx.gz
+/home/matheesha/Documents/multi-tenant-chat-bot/multi-tenant-chatbot/obj/Debug/net9.0/compressed/2m8hyh76hi-y6h7hsrxbx.gz

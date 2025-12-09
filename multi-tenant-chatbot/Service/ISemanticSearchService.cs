@@ -4,5 +4,5 @@ namespace multi_tenant_chatBot.Service;
 
 public interface ISemanticSearchService
 {
-    Task SearchEmbeddings(SematicSearchingDto semanticSearchingDto);
+    Task<string> SearchEmbeddings(SematicSearchingDto semanticSearchingDto);
 }

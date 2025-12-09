@@ -36,9 +36,9 @@ public class ChatBotServiceImpl: IChatBotService
                 DefaultConfig(new LlmConfigurationsDto(
                     chatBotEntity.Id,
                     LlmModelsDto.KimiK2,
-                    2.2,
+                    1,
                     45,
-                    1.2
+                    1
                     ));
             
             await transaction.CommitAsync();

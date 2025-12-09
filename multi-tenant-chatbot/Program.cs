@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using multi_tenant_chatBot.ApiService;
 using multi_tenant_chatBot.Configurations;
 using multi_tenant_chatBot.Data;
 using multi_tenant_chatBot.DocRead;
@@ -53,6 +54,13 @@ try
     builder.Services.AddScoped<IModels,KimiK2>();
     builder.Services.AddScoped<IModels,Llama4Scout>();
     builder.Services.AddScoped<IModelSelector,ModelSelector>();
+    builder.Services.AddScoped<IApiKeyService,ApiKeyServiceImpl>();
+    builder.Services.AddControllers(options =>
+    {
+        options.Filters.Add<ApiKey>();
+    });
+
+    
     
     var connectionString = "server=localhost;user=root;password=1234;database=ragPipeline";
     var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
@@ -81,6 +89,8 @@ try
     
     var observer = app.Services.GetRequiredService<DocAndChunksObserver>();
     
+    
+
     
     app.UseRouting();
 

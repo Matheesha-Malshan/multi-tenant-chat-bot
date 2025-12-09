@@ -26,26 +26,36 @@ public class SemanticSearchServiceImpl:ISemanticSearchService
       _modelSelector = modelSelector;
     }
     
-    public async Task SearchEmbeddings(SematicSearchingDto semanticSearchingDto)
+    public async Task<string> SearchEmbeddings(SematicSearchingDto semanticSearchingDto)
     {
+        var chatBotWithApiKey=await _appDb.ChatBots.FindAsync(semanticSearchingDto.ChatBotId);
+        if (chatBotWithApiKey == null)
+        {
+            return "No api key found";
+        }
+
+        if (chatBotWithApiKey.ApiKey != semanticSearchingDto.ApiKey)
+        {
+            return "Invalid api key";
+        }
         
         float[]? embeddings = await _embeddingsCreater.CreateEmbeddings(semanticSearchingDto.Query);
 
         if (embeddings==null)
         {
-            return;
+            return "No embedding found";
         }
         var configurationEntity = await _appDb.LlmConfig
             .FirstOrDefaultAsync(a => a.ChatBotId == semanticSearchingDto.ChatBotId);
 
-        LlmConfigurationsDto congifDto=_mapper.Map<LlmConfigurationsDto>(configurationEntity);
-            
+        var congifDto=_mapper.Map<LlmConfigurationsDto>(configurationEntity);
+        
         string words = await _retriveEmbeddings.RetriveEmbeddingsAsWords(embeddings, 
-            semanticSearchingDto.ChatBotId);
-
-
+             semanticSearchingDto.ChatBotId);
+         
         var model=_modelSelector.GetModels(congifDto.ModelName);
-        await model.CreateChat(semanticSearchingDto.Query,congifDto);
+       
+        return await model.CreateChat(semanticSearchingDto.Query, congifDto, words);
 
     }
     
