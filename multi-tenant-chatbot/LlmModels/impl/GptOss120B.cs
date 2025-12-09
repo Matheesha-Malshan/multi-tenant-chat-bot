@@ -16,7 +16,7 @@ public class GptOss120B:IModels
     }
     public async Task<string> CreateChat(string userQuery,LlmConfigurationsDto configDto,string words)
     {
-            var client = _httpClientFactory.CreateClient();
+        var client = _httpClientFactory.CreateClient();
 
         client.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", _apiKey);
