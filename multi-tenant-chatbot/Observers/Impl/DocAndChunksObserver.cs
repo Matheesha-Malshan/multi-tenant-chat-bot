@@ -1,5 +1,7 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using multi_tenant_chatBot.Data;
 using multi_tenant_chatBot.Dto;
 using multi_tenant_chatBot.Model;

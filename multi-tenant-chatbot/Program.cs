@@ -1,4 +1,8 @@
+using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using multi_tenant_chatBot.ApiService;
 using multi_tenant_chatBot.Configurations;
 using multi_tenant_chatBot.Data;

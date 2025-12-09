@@ -1,4 +1,8 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.Extensions.Logging;
 using multi_tenant_chatBot.Data;
 using multi_tenant_chatBot.Dto;
 using multi_tenant_chatBot.Embeddings;

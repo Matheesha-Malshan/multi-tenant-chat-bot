@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace multi_tenant_chatBot.Llm;
 
 public interface IEmbeddingsCreater

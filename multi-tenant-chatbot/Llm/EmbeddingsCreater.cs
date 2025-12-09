@@ -1,5 +1,7 @@
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using multi_tenant_chatBot.Dto;
 
 namespace multi_tenant_chatBot.Llm;

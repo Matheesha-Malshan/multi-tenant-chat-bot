@@ -6,7 +6,7 @@ public class TextReaderImpl:IReaders
 { 
     public async Task<string[]> CreateText(DocumentDto doc)
     {
-        using var reader = new StreamReader(doc.File.OpenReadStream());
+        using var reader = new StreamReader((Stream)doc.File.OpenReadStream());
     
         string text = await reader.ReadToEndAsync();
 
