@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,4 +15,6 @@ public class OrganizationEntity
     public string? PhoneNumber { get; set; }
     [MaxLength(255)]
     public string? Email { get; set; }
+    
+    public ICollection<ChatBotEntity> ChatBots { get; set; } = new List<ChatBotEntity>();
 }
