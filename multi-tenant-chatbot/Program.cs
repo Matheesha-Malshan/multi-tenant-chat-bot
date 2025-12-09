@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MongoDB.Driver;
 using multi_tenant_chatBot.ApiService;
 using multi_tenant_chatBot.Configurations;
 using multi_tenant_chatBot.Data;
@@ -59,11 +60,18 @@ try
     builder.Services.AddScoped<IModels,Llama4Scout>();
     builder.Services.AddScoped<IModelSelector,ModelSelector>();
     builder.Services.AddScoped<IApiKeyService,ApiKeyServiceImpl>();
+    builder.Services.AddScoped<IChatHistoryService,ChatHistoryServiceImpl>();
+    
+    
     builder.Services.AddControllers(options =>
     {
         options.Filters.Add<ApiKey>();
     });
-
+    
+    builder.Services.AddSingleton<IMongoClient>(sp =>
+    {
+        return new MongoClient("mongodb://localhost:27017/");
+    });
     
     
     var connectionString = "server=localhost;user=root;password=1234;database=ragPipeline";

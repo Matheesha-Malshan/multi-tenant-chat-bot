@@ -1,3 +1,6 @@
+using System;
+using Microsoft.AspNetCore.Http;
+
 namespace multi_tenant_chatBot.Dto;
 
 public class DocumentDto
