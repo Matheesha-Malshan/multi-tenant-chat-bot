@@ -1,4 +1,4 @@
-![Logo](./assets/logo.png)
+![Logo](./assets/logo.jpg)
 
 🏢 Multi-Tenant RAG Chatbot Platform (.NET 9 | Qdrant | MongoDB | Ollama)
 
